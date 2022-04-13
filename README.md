@@ -4,21 +4,13 @@
 
 ## 前情提示
 mac os 12.1
-
 自带python python -V Python 3.8.8
-
 webstorm 2021.3.2
-
 node -v v14.17.5 保持最新即可
-
 npm -v 6.14.14
-
 yarn -v 1.22.11
-
 npm list electron electron@17.4.0  较新
-
 ws@8.5.0
-
 Windows10 Mac下VM虚拟
 
 
