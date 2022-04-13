@@ -1,10 +1,14 @@
 {
-  "name": "serialProxy",
+  "name": "pgz-serialport-proxy",
   "version": "1.0.0",
-  "description": "A minimal serialport Proxy",
+  "description": "A minimal electron node serialport Proxy",
   "main": "main.js",
   "build": {
-    "appId": "com.bushangbao.www"
+    "appId": "com.pusdn.esp",
+    "copyright": "Copyright © 2014-NOW Powered By Pgz",
+    "win": {
+      "icon": "build/icons/icon_256x256@1x.png"
+    }
   },
   "scripts": {
     "start": "electron . development",
@@ -15,16 +19,18 @@
     "postinstall": "electron-builder install-app-deps",
     "dist-win": "electron-builder --win --ia32"
   },
-  "repository": "https://github.com/sjzsdu/serialPortProxy",
+  "repository": "https://www.pusdn.com/",
   "keywords": [
     "Electron",
     "quick",
     "start",
     "tutorial",
-    "demo"
+    "PUSDN",
+    "JaneYork",
+    "SerialPort"
   ],
-  "author": "Sjzsdu",
-  "license": "CC0-1.0",
+  "author": "PGZ",
+  "license": "GPL",
   "devDependencies": {
     "electron": "^17.0.0",
     "electron-builder": "^23.0.3"

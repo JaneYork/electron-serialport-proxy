@@ -104,7 +104,12 @@ const sptool = {
                 for (let c of clients) {
                     // 发送给其它客户端
                     try {
-                        c.send(res)
+                        if (c.readyState === WebSocket.OPEN) {
+                            c.send(res)
+                            c.send(res)
+                        }else {
+                            console.log('ws连接中断',c.readyState)
+                        }
                     }catch (err) {
                         console.log(res)
                     }
