@@ -3,15 +3,15 @@
 一个基于electron、node-serialport开发的串口通讯代理器，网页轻松访问串口中的数据。连接rfid感应器、电子秤、串口调试、直吹网页web浏览器直接获取等等。
 
 ## 前情提示
-mac os 12.1
-自带python python -V Python 3.8.8
-webstorm 2021.3.2
-node -v v14.17.5 保持最新即可
-npm -v 6.14.14
-yarn -v 1.22.11
-npm list electron electron@17.4.0  较新
-ws@8.5.0
-Windows10 Mac下VM虚拟
+mac os 12.1。
+自带python python -V Python 3.8.8   
+webstorm 2021.3.2  
+node -v v14.17.5 保持最新即可  
+npm -v 6.14.14  
+yarn -v 1.22.11  
+npm list electron electron@17.4.0  较新  
+ws@8.5.0  
+Windows10 Mac下VM虚拟  
 
 
 ## 更新计划
