@@ -4,13 +4,21 @@
 
 # 前情提示
 mac os 12.1
+
 自带python 
+
 webstorm 2021.3.2
+
 node -v v14.17.5 保持最新即可
+
 npm -v 6.14.14
+
 python -V Python 3.8.8
+
 yarn -v 1.22.11
+
 npm list electron electron@17.4.0  较新
+
 ws@8.5.0
 
 
@@ -28,8 +36,15 @@ ws@8.5.0
 ## 截图
 <img width="600" alt="image" src="https://user-images.githubusercontent.com/29787967/163120574-0634ff4f-b3b6-4f42-8716-bee52f83887d.png">
 
+<img width="1436" alt="image" src="https://user-images.githubusercontent.com/29787967/163123727-f3518683-9bcc-4ed1-ab50-1e449a03b240.png">
 
 ## 安装与使用
+
+### 直接安装打包好的EXE
+
+
+
+### 开发
 
 
 ```bash
@@ -48,7 +63,20 @@ npm run dist-win
 ## 本地没有串口硬件怎么办
 简单说下思路和用到的软件。具体可以去http://www.pusdn.com/
 串口模拟软件创建一对COM2，COM3 - 串口调试软件连接COM2模拟定税发送 - 本软件连接COM3自动接收，并使用ws转发 - 浏览器ws测试连接websocket server
+
 用到的软件（来自互联网）
+
+
+
+## 注意事项
+
+- 如果没办法卸载NSI S错误，直接去C盘对应安装位置，删除即可。
+- 如果没办法安装，直接先手动删除目录。
+- 没法打开串口：可能占用了，或者没权限，或者不存在。关闭重新打开连接试试。
+- 文帝websocket连接ws://localhost:9526
+- 常用网址和测试工具，详见http://www.pusdn.com
+
+
 
 
 ## 功能
