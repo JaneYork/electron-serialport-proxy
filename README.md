@@ -1,29 +1,55 @@
 
-# serialPortProxy 串口代理
-一个基于electron、node-serialport开发的串口通讯代理器，网页轻松访问串口中的数据。连接rfid感应器、电子秤等等。
+# 说明
+一个基于electron、node-serialport开发的串口通讯代理器，网页轻松访问串口中的数据。连接rfid感应器、电子秤、串口调试、直吹网页web浏览器直接获取等等。
+
+# 前情提示
+mac os 12.1
+自带python 
+webstorm 2021.3.2
+node -v v14.17.5 保持最新即可
+npm -v 6.14.14
+python -V Python 3.8.8
+yarn -v 1.22.11
+npm list electron electron@17.4.0  较新
+ws@8.5.0
+
+
+# 更新计划
+- 支持WS server，直接回传给客户端 [✅]
+- 目前可以i在Mac等多平台开发调试，但是发布打包只打包Windows exe，毕竟串口通常用于Windows。
 
 ## 原理
+内置 ws server 直接将串口数据尽数返回websocket client
 通过nodejs的http模块开启http服务，接受请求，可以根据请求的参数，调用对应的连接串口函数（目前已经实现连接rfid感应器），
 串口函数负责打开串口读取数据，并将数据返回给http请求。
 暂时已经写死了rfid，如果有要连接其他的设备，直接修改串口函数即可。
 
-## 安装与使用
 
-![软件效果](public/img/app.png)
+## 截图
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/29787967/163120574-0634ff4f-b3b6-4f42-8716-bee52f83887d.png">
+
+
+## 安装与使用
 
 
 ```bash
-# 克隆
-git clone git@github.com:sjzsdu/serialPortProxy.git
-# 进入目录
-cd serialPortProxy
 # 安装
-npm install
-# 调试
+npm install --registry https://registry.npmmirror.com/
+# 本地测试
 npm start
-# 打包
+# 打包（先不用，需要全局依赖）
 npm pack
+# 打包发布win （使用这个）
+npm run dist-win
+
 ```
+
+
+## 本地没有串口硬件怎么办
+简单说下思路和用到的软件。具体可以去http://www.pusdn.com/
+串口模拟软件创建一对COM2，COM3 - 串口调试软件连接COM2模拟定税发送 - 本软件连接COM3自动接收，并使用ws转发 - 浏览器ws测试连接websocket server
+用到的软件（来自互联网）
+
 
 ## 功能
 + 写入卡号并返回
@@ -36,14 +62,6 @@ js访问 $.ajax('http://localhost:9527/rfid/bind')
 js访问 $.ajax('http://localhost:9527/rfid/multi')
 返回rfids卡号，以（epc|epc）的形式
 
-## NODE_MODULE_VERSION 不一致的问题
-可以尝试一下的编译方式解决
-```
-npm install -g node-gyp
-cd ./node_modules/@serialport/bingdings
-node-gyp rebuild --target=6.0.10【你安装的electron版本】 --arch=x64 --dist-url=https://atom.io/download/electron
-```
-编译成功就可以解决这个问题。
 
 ## 其他
 + 本代码借鉴 [基于electron的桌面串口工具](https://github.com/PowerDos/electron-serialport)，感谢！
