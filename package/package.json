@@ -1,0 +1,40 @@
+{
+  "name": "serialProxy",
+  "version": "1.0.0",
+  "description": "A minimal serialport Proxy",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron . development",
+    "packall": "npm run pack:linux  && npm run pack:win",
+    "pack:linux": "electron-packager . serialProxy --platform=linux --out ../release --arch=x64 --overwrite --icon=./public/img/icon.png",
+    "pack:win": "electron-packager . serialProxy --platform=win32 --out ../release --arch=x64 --overwrite --icon=./public/img/icon.png",
+    "dist": "electron-builder",
+    "postinstall": "electron-builder install-app-deps",
+    "dist-win": "electron-builder --ia32"
+  },
+  "build": {
+    "appId": "com.bushangbao.www",
+    "copyright": "pgz",
+    "win": {
+      "icon": "build/icons/icon_256x256@1x.png"
+    }
+  },
+  "repository": "https://github.com/sjzsdu/serialPortProxy",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "pgz",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^17.0.0",
+    "electron-builder": "^23.0.3"
+  },
+  "dependencies": {
+    "@serialport/parser-inter-byte-timeout": "^1.1.0",
+    "serialport": "^10.3.0"
+  }
+}

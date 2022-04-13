@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PGZ</title>
+    <script src="./public/js/flexible.js"></script>
+    <link rel="stylesheet" href="./public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./public/css/index.css">
+</head>
+
+<body>
+    <div class="body-box">
+        <div class="tool-bar">
+            <div class="select-data">
+                <div class="form-group">
+                    <label for="disabledSelect">选择串口</label>
+                    <select id="disabledSelect" class="form-control com">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="BaudRate">波特率</label>
+                    <!-- <input type="text" class="form-control" id="BaudRate" value="9600"> -->
+                    <select id="baudSelect" class="form-control baud">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="debugCode">debugCode</label>
+                     <input type="text" class="form-control" id="debugCode" value="">
+                </div>
+            </div>
+        </div>
+        <div class="content-box">
+            <div class="receive-box">
+                <div class="send-header">
+                    <label>接受信息</label>
+                </div>
+                <div class="receive-windows">
+                </div>
+                <div id="error"></div>
+                <div id="ports"></div>
+            </div>
+
+            <div class="send-box">
+                <!-- <div class="send-header">
+                    <label>发送信息</label>
+                </div>
+                <div class="send-windows">
+                    <textarea class="input-send-data"></textarea>
+                </div> -->
+                <div class="send-btn">
+                    <div class="btn-box">
+                        <div class="btn btn-warning btn-send">读取卡号</div>&nbsp&nbsp&nbsp
+                        <div class="btn btn-danger btn-reset">清空信息</div>
+                        <div class="btn btn-danger btn-reset" id="debugCodeBtn">DEBUG_CODE</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./index.out.js" charset="utf-8"></script>
+</body>
+<script type="module">
+    const { WebSocketServer } = require('ws')
+    window.clients = []; // 已连接的客户端
+    const wss = new WebSocketServer({ port: 9526 });
+
+    wss.on('connection', function connection(ws) {
+        console.log('client connected',ws)
+        if (clients.indexOf(ws) === -1) {
+            clients.push(ws)
+        }
+        ws.on('message', function message(data) {
+            console.log('wss received: %s', data);
+        });
+        for (let c of clients) {
+            // 发送给其它客户端
+            // if (c != ws) c.send(msg);
+        }
+        ws.send('something')
+    });
+</script>
+
+</html>
