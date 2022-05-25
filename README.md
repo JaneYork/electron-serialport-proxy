@@ -2,6 +2,10 @@
 
 一个基于electron、node-serialport开发的串口通讯代理器，网页轻松访问串口中的数据。连接rfid感应器、电子秤、串口调试、直吹网页web浏览器直接获取等等。
 
+## 新版本
+支持VUE，新界面
+https://github.com/JaneYork/pgz-serialport
+
 ## 前情提示
 mac os 12.1。
 自带python python -V Python 3.8.8   
